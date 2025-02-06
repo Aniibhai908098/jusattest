@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .info-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .info-item {
+            margin-bottom: 15px;
+        }
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+        .value {
+            color: #666;
+            margin-left: 10px;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>User Information</h2>
+    <div class="info-card">
+        <div class="info-item">
+            <span class="label">Name:</span>
+            <span class="value" id="displayName"></span>
+        </div>
+        <div class="info-item">
+            <span class="label">Father's Name:</span>
+            <span class="value" id="displayFatherName"></span>
+        </div>
+        <div class="info-item">
+            <span class="label">Qualification:</span>
+            <span class="value" id="displayQualification"></span>
+        </div>
+    </div>
+    
+    <a href="form.html" class="back-button">Back to Form</a>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Display the form data
+        document.getElementById('displayName').textContent = getUrlParameter('name');
+        document.getElementById('displayFatherName').textContent = getUrlParameter('fatherName');
+        document.getElementById('displayQualification').textContent = getUrlParameter('qualification');
+    </script>
+</body>
+</html>
